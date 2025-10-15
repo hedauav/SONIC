@@ -2,55 +2,81 @@
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/Footer";
+import Header from "@/components/header";
+import { FeatureTag } from "@/components/FeatureTag";
+import { StatCard } from "@/components/StatCard";
+import { Zap } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white-pattern">
-      {/* Hero Section */}
-      <section className="min-h-screen flex flex-col justify-between pb-10 md:pb-20">
-        <div className="flex justify-between items-center pt-20 md:pt-32 container mx-auto px-4 md:px-16 ">
-          <Link href="/">
-            <Image
-              className="cursor-pointer"
-              src="/assets/logos/logo.svg"
-              width={250}
-              height={250}
-              alt="FIL-B Logo"
-            />
+    <div className="min-h-screen bg-white">
+      <Header />
+      
+      {/* Main Content */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24">
+        {/* Protocol Banner */}
+        <div className="flex justify-center items-center mb-8 mt-16">
+          <div className="bg-gray-50 py-2 px-4 rounded-full inline-flex items-center">
+            <Zap size={16} className="text-amber-500 mr-2" />
+            <span className="text-sm text-gray-600">Powered by Flow, Self Protocol & IPFS</span>
+          </div>
+        </div>
+      
+        {/* Hero Section */}
+        <div className="text-center mb-12">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            Tokenize Your <span className="text-blue-600">Voice Assets</span>
+          </h1>
+          
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
+            Securely store, tokenize, and monetize your audio with blockchain technology.
+          </p>
+          
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Privacy-first identity verification and encrypted decentralized storage.
+          </p>
+        </div>
+        
+        {/* Feature Tags */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <FeatureTag text="Self Protocol Verified" type="protocol" />
+          <FeatureTag text="IPFS Encrypted Storage" type="ipfs" />
+          <FeatureTag text="Flow Blockchain" type="blockchain" />
+        </div>
+        
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-24">
+          <Link href="/store">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md font-medium flex items-center justify-center">
+              <svg 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="mr-2"
+              >
+                <path d="M5 12L19 12" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                <path d="M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              Start Tokenizing
+            </button>
+          </Link>
+          
+          <Link href="/marketplace">
+            <button className="border border-gray-300 hover:border-gray-400 text-gray-800 px-8 py-3 rounded-md font-medium">
+              Explore Marketplace
+            </button>
           </Link>
         </div>
-        <div className="container mx-auto px-4 md:px-16">
-          <div className="pt-10 md:pt-20">
-            {/* Main Content */}
-            <div className="space-y-4 md:space-y-6 mb-10 md:mb-16">
-              <h1 className="font-funnel-display text-3xl md:text-5xl lg:text-7xl font-bold text-black max-w-4xl">
-                We are FIL Builders
-              </h1>
-              <p className="font-funnel-display text-lg md:text-xl text-gray-500">
-                Cross the Filecoin chasm with us.
-              </p>
-            </div>
-          </div>
+        
+        {/* Stats Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+          <StatCard value="1,247" label="Tokens Minted" />
+          <StatCard value="342" label="Active Creators" />
+          <StatCard value="15.8 ETH" label="Total Volume" />
         </div>
-
-        {/* Tools Section */}
-        <div className="container mx-auto px-4 md:px-16">
-          <div className="flex flex-col md:flex-row items-center justify-between border-t border-gray-200 pt-6 md:pt-8 gap-4 md:gap-0">
-            <div className="flex items-center gap-2">
-              <span className="ffont-funnel-display text-gray-900">
-                Welcome to Filecoin Starter Kit
-              </span>
-            </div>
-            <div className="flex flex-col md:flex-row gap-2 md:gap-0 w-full md:w-auto">
-              <Link href="/store" className="w-full md:w-[200px]">
-                <div className="w-full md:w-[200px] py-3 text-gray-900 border border-gray-200 hover:border-gray-400 transition-colors text-center font-funnel-display">
-                  Store Data
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
 
       {/* Footer */}
       <Footer />
