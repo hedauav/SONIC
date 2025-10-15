@@ -37,6 +37,13 @@ export default function Faucet() {
     const isMatching = connectedChainId === selectedId;
     const [uploading, setUploading] = useState(false)
 
+  // Sync selected chain to connected wallet network
+  useEffect(() => {
+    if (connectedChainId && connectedChainId !== selectedId) {
+      setSelectedId(connectedChainId);
+    }
+  }, [connectedChainId]);
+
   const signer = useEthersSigner();
   const provider = useEthersProvider();
 
@@ -223,6 +230,24 @@ export default function Faucet() {
                             <h2 className="font-funnel-display text-2xl font-bold text-black mb-4">
                                 Upload & Store Image
                             </h2>
+                            {isConnected && !isMatching && (
+                                <div className="w-full max-w-md p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                                    <div className="flex items-center justify-between">
+                                        <p className="text-sm text-yellow-800 font-funnel-display">
+                                            You are on the wrong network. Please switch to the expected chain.
+                                        </p>
+                                        <button
+                                            onClick={() => switchChain({ chainId: selectedId })}
+                                            disabled={isSwitching}
+                                            className={`ml-3 px-3 py-1.5 rounded-md text-sm font-funnel-display font-semibold transition-colors ${
+                                                isSwitching ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-yellow-600 text-white hover:bg-yellow-700'
+                                            }`}
+                                        >
+                                            {isSwitching ? 'Switching...' : 'Switch Network'}
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
                             <div className="relative">
                                 <input
                                     type="file"
@@ -316,9 +341,9 @@ export default function Faucet() {
                                     <div className="flex flex-col items-center space-y-2">
                                         <button
                                             onClick={handleStore}
-                                            disabled={isStoring || !isConnected || !isMatching}
+                                            disabled={isStoring || !isConnected || !isMatching || !uploadedFile}
                                             className={`px-6 py-3 rounded-lg font-funnel-display font-semibold transition-colors ${
-                                                isStoring || !isConnected || !isMatching
+                                                isStoring || !isConnected || !isMatching || !uploadedFile
                                                     ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                                                     : 'bg-blue-600 text-white hover:bg-blue-700'
                                             }`}
