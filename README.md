@@ -1,4 +1,4 @@
-# 🎵 SonicIPChain - Tokenize Your Voice Assets
+# 🎵 SonicIPChain - Tokenize Your Voice Asset
 
 A decentralized platform for recording, tokenizing, and managing audio content on the blockchain. Built with Next.js, Ethereum, and IPFS for secure and permanent audio storage.
 
@@ -207,3 +207,4 @@ This project is licensed under the MIT License.
 ---
 
 **⚡ Powered by FileCoin & IPFS**
+
