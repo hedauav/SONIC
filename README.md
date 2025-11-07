@@ -9,7 +9,7 @@ A decentralized platform for recording, tokenizing, and managing audio content o
 
 ## ⚡ Features
 
-- **🎙️ Audio Recording**: Record audio directly in your browser with real-time feedback
+- **🎙️ Audio Recording**: Record audio directly in your browser with real-time feedbacks
 - **🔐 Blockchain Storage**: Tokenize your audio as NFTs on the Ethereum blockchain
 - **📦 IPFS Integration**: Permanent, decentralized storage using Lighthouse and IPFS
 - **💼 My Collection**: Browse and manage all your tokenized audio recordings
@@ -207,5 +207,6 @@ This project is licensed under the MIT License.
 ---
 
 **⚡ Powered by FileCoin & IPFS**
+
 
 
